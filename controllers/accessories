@@ -1,0 +1,19 @@
+var express = require('express');
+var acc = express.Router();
+
+const accessories = ['guitar cable', 'microphone', 'power supply'];
+
+acc.get('/', function(req, res) {
+    res.send('Hello from accessories route.');
+});
+
+acc.get('/viewitems', function(req, res) {
+    res.send(accessories);
+});
+
+acc.post('/additem', function(req, res) {
+    res.send('Item added to inventory!');
+    accessories.push(req.body.item);    
+});
+
+module.exports = acc;

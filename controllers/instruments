@@ -1,0 +1,19 @@
+var express = require('express');
+var inst = express.Router();
+
+const instruments = ['guitar', 'piano', 'bass'];
+
+inst.get('/', function(req, res) {
+    res.send('Hello from instrument route.');
+});
+
+inst.get('/viewitems', function(req, res) {
+    res.send(instruments);
+});
+
+inst.post('/additem', function(req, res) {
+    res.send('Item added to inventory!');
+    instruments.push(req.body.item);
+});
+
+module.exports = inst;
